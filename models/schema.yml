@@ -39,3 +39,22 @@ models:
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+  - name: stg_customer_orders.sql
+    description: Model finds number of orders per customer & when each order took place
+    columns:
+      - name: customer_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: first_order_date
+        description: Date
+        tests:
+          - not_null
+      - name: most_recent_order_date
+        description: Date
+        tests:
+          - not_null     
